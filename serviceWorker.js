@@ -1,5 +1,18 @@
 'use strict';
 
+function hashCode(input) {
+    var hash = 0, i, chr, len;
+    if (input.length === 0)
+        return hash;
+    for (i = 0, len = input.length; i < len; i++) {
+        chr = input.charCodeAt(i);
+        hash = ((hash << 5) - hash) + chr;
+        hash |= 0; // Convert to 32bit integer
+    }
+    return hash;
+}
+;
+
 var customUrl = '/';
 
 console.log('Started', self);
@@ -17,13 +30,21 @@ self.addEventListener('push', function(event) {
     console.log('ServiceWorker Push message', event);
 
     event.waitUntil(
-            fetch('/gcm-notify.json').then(function(response) {
+            fetch('/gcm-notify.json.php').then(function(response) {
         return response.json().then(function(data) {
             console.log(JSON.stringify(data));
             var title = data.title;
             var body = data.body;
             var icon = data.icon;
-            customUrl = data.url;
+            customUrl = data.url + '&utm_source=pushApiGCM';
+
+            self.registration.pushManager.getSubscription().then(function(subscription) {
+                if (subscription) {
+                    var endPoint = (subscription.endpoint).replace('https://android.googleapis.com/gcm/send/', '');
+                    customUrl += '&utm_endpoint=' + endPoint
+                    customUrl += '&utm_endpointHash=' + hashCode(endPoint);
+                }
+            });
 
             return self.registration.showNotification(title, {
                 body: body,
@@ -45,7 +66,7 @@ self.addEventListener('notificationclick', function(event) {
     event.notification.close();
 
     clients.openWindow(customUrl);
-    
+
     /*
      // This looks to see if the current is already open and
      // focuses if it is
@@ -63,3 +84,4 @@ self.addEventListener('notificationclick', function(event) {
      */
 
 });
+

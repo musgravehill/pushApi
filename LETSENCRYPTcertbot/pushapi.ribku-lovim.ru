@@ -35,9 +35,15 @@ server {
 		log_not_found off;
 	}
 
-    location /gcm-notify.json {
+    location /gcm-notify.json.php {
 		expires 10s;
         access_log off; 
+		log_not_found off;
+	}
+
+       location /serviceWorker.js {
+		expires 10s;
+              access_log off; 
 		log_not_found off;
 	}	
 	

@@ -34,7 +34,7 @@
                         var params = {};
                         params['endpoint'] = sub.endpoint;
                         $.post("/collectEndpoints.php", params).done(function() {
-                            console.log('SEND endpoint TO TXT');
+                            console.log('SEND endpoint TO server');
                         });
 
                     });
@@ -42,6 +42,21 @@
                     console.log('Service Worker error :^(', error);
                 });
             }
+
+
+            String.prototype.hashCode = function() {
+    var hash = 0, i, chr, len;
+    if (this.length === 0)
+        return hash;
+    for (i = 0, len = this.length; i < len; i++) {
+        chr = this.charCodeAt(i);
+        hash = ((hash << 5) - hash) + chr;
+        hash |= 0; // Convert to 32bit integer
+    }
+    return hash;
+};
+
+console.log('ew0_oamij1U:APA91bF5L3LB0J7aJSrVe0fDL4ukkilPXLopw-PY3YcqsZF8Gj334lXu-28vmUvHNRF1IzRQY0TERlsN0J4j2FcmwNvPAJmGpzqzah7JbyKmEPWcdr6LZACWRip5WCCjDjBEDGCuxmpP'.hashCode());
 
         </script>
 
