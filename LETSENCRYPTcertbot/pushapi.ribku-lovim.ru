@@ -29,11 +29,17 @@ server {
 	root   /var/www/pushapi.ribku-lovim.ru;
 	index  index.php;		
 	
-	#location ~ /\. {
-		#deny all; 
-		#access_log off; 
-		#log_not_found off;
-	#}	
+	location ~ /\. {
+		deny all; 
+		access_log off; 
+		log_not_found off;
+	}
+
+    location /gcm-notify.json {
+		expires 10s;
+        access_log off; 
+		log_not_found off;
+	}	
 	
 	location ~* ^.+.(jpg|jpeg|gif|png|ico|css|bmp|swf|js|mp3)$ {
 		access_log        off;

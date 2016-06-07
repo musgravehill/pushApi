@@ -2,5 +2,5 @@
   "title": "Андрей, привет!",
   "body": "Скоро обед..",
   "icon": "\/html\/soup.png",
-  "url": "\/html\/soup.html?utm_from=pushApiGCM"
+  "url": "\/html\/soup.html?utm_source=pushApiGCM"
 }
