@@ -1,6 +1,6 @@
 {
-  "title": "GCM HELLO NOTIFY",
-  "body": "Работает!!!! Это из gcm-notify.json спарсено!",
-  "icon": "xyz-stage.png",
-  "url": "\/xyz-stage.html"
+  "title": "Андрей, привет!",
+  "body": "Скоро обед..",
+  "icon": "\/html\/soup.png",
+  "url": "\/html\/soup.html?utm_from=pushApiGCM"
 }

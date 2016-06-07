@@ -1,21 +1,15 @@
 <?php
 
-$data = array();
+echo '?to='. '<br><br>';
 
-$handle = fopen("endpoints.txt", "r");
-if ($handle) {
-    while (($line = fgets($handle)) !== false) {
-        $data['registration_ids'][] = trim(str_replace(array('https://android.googleapis.com/gcm/send/', PHP_EOL, "\r", "\n"), '', $line));
-    }
-    fclose($handle);
-} else {
-    die();
-}
+$data = array();
+$data['to'] = $_GET['to'];
+
 
 $url = "https://android.googleapis.com/gcm/send";
 $content = json_encode($data);
 
-echo $content.'<br><br>';
+echo $content . '<br><br>';
 
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_HEADER, false); // don't return headers
@@ -31,7 +25,7 @@ $response = curl_exec($curl);
 $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
 if ($status != 201) {
-    die("Error: call to URL $url failed with status $status, response $response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl)).'<br><br>';
+    die("Error: call to URL $url failed with status $status, response $response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl)) . '<br><br>';
 }
 
 curl_close($curl);

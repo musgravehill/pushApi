@@ -5,3 +5,5 @@ if (isset($_POST['endpoint'])){
 	fwrite($handle, $_POST['endpoint'] . PHP_EOL); 
 	fclose($handle);
 }
+
+echo 'OK';
