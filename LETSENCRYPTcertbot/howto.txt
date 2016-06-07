@@ -1,0 +1,27 @@
+https://letsencrypt.org/getting-started/
+
+git clone https://github.com/certbot/certbot
+cd certbot
+./certbot-auto
+./certbot-auto --help
+
+nginx conf site: 
+  #disable command
+  #  location ~ /\. { deny all;  }
+  
+The certbot can requests to http://pushapi.ribku-lovim.ru/.well-known/acme-challenge/-cYCYF6RqYwOLDyMDgCz6GygOPHy8m6TKfJcyNQI84E  
+
+RUN: 
+./certbot-auto certonly --webroot -w /var/www/pushapi.ribku-lovim.ru -d pushapi.ribku-lovim.ru 
+
+
+
+--------------------------
+  
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at
+   /etc/letsencrypt/live/pushapi.ribku-lovim.ru/fullchain.pem. Your
+   cert will expire on 2016-09-05. To obtain a new or tweaked version
+   of this certificate in the future, simply run certbot-auto again.
+   To non-interactively renew *all* of your certificates, run
+   "certbot-auto renew"
