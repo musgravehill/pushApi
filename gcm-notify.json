@@ -1,6 +1,6 @@
 {
-  "title": "Андрей, привет!",
-  "body": "Скоро обед..",
-  "icon": "\/html\/soup.png",
-  "url": "\/html\/soup.html?utm_source=pushApiGCM"
+  "title": "Всем привет!",
+  "body": "Столик координатный с микроподвижками XY-axis.",
+  "icon": "\/html\/xyz-stage.png",
+  "url": "\/html\/xyz-stage.html?utm_source=pushApiGCM"
 }

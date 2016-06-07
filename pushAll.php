@@ -37,3 +37,5 @@ if ($status != 201) {
 curl_close($curl);
 
 print_r($response);
+
+//https://developers.google.com/cloud-messaging/http-server-ref#downstream-http-messages-json
